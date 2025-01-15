@@ -50,9 +50,11 @@ jobs:
       - name: Select the workspace
         run: |
           terraform workspace select ${{ github.event.inputs.workspace }} || terraform workspace new ${{ github.event.inputs.workspace }}
+        working-directory: ./Terraform-vpc
 
       - name: Validate Terraform configuration
         run: terraform validate
+        working-directory: ./Terraform-vpc
 
       - name: Plan Terraform deployment with specific tfvars
         run: |
@@ -71,6 +73,7 @@ jobs:
               terraform plan -var-file="default.tfvars" -no-color
             fi
           fi
+        working-directory: ./Terraform-vpc
 
       - name: Apply Terraform changes
         run: |
@@ -89,3 +92,4 @@ jobs:
               terraform apply -var-file="dev.tfvars" -auto-approve -no-color
             fi
           fi
+        working-directory: ./Terraform-vpc
