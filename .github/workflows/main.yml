@@ -7,13 +7,12 @@ on:
       workspace:
         description: 'Select Terraform workspace'
         required: true
-        default: 'default'
+        default: 'dev'
         type: choice
         options:
-          - default
-          - staging
-          - production
           - dev
+          - test
+          - prod
       deployment_type:
         description: 'Select deployment type'
         required: true
@@ -57,26 +56,36 @@ jobs:
 
       - name: Plan Terraform deployment with specific tfvars
         run: |
-          # Use the appropriate tfvars file based on the selected workspace
-          if [ "${{ github.event.inputs.workspace }}" == "staging" ]; then
-            terraform plan -var-file="staging.tfvars" -no-color
-          elif [ "${{ github.event.inputs.workspace }}" == "production" ]; then
-            terraform plan -var-file="production.tfvars" -no-color
-          elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
-            terraform plan -var-file="dev.tfvars" -no-color
+          if [ "${{ github.event.inputs.deployment_type }}" == "destroy" ]; then
+            # If destroy is selected, we plan for destruction
+            terraform plan -destroy -var-file="${{ github.event.inputs.workspace }}.tfvars" -no-color
           else
-            terraform plan -var-file="default.tfvars" -no-color
+            # Otherwise, plan for deployment
+            if [ "${{ github.event.inputs.workspace }}" == "test" ]; then
+              terraform plan -var-file="terraform.tfvars" -no-color
+            elif [ "${{ github.event.inputs.workspace }}" == "prod" ]; then
+              terraform plan -var-file="prod.tfvars" -no-color
+            elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
+              terraform plan -var-file="dev.tfvars" -no-color
+            else
+              terraform plan -var-file="default.tfvars" -no-color
+            fi
           fi
 
       - name: Apply Terraform changes
         run: |
-          # Apply using the corresponding tfvars file
-          if [ "${{ github.event.inputs.workspace }}" == "staging" ]; then
-            terraform apply -var-file="staging.tfvars" -auto-approve -no-color
-          elif [ "${{ github.event.inputs.workspace }}" == "production" ]; then
-            terraform apply -var-file="production.tfvars" -auto-approve -no-color
-          elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
-            terraform apply -var-file="dev.tfvars" -auto-approve -no-color
+          if [ "${{ github.event.inputs.deployment_type }}" == "destroy" ]; then
+            # If destroy is selected, apply the destruction
+            terraform destroy -var-file="${{ github.event.inputs.workspace }}.tfvars" -auto-approve -no-color
           else
-            terraform apply -var-file="default.tfvars" -auto-approve -no-color
+            # Otherwise, apply the deployment
+            if [ "${{ github.event.inputs.workspace }}" == "test" ]; then
+              terraform apply -var-file="terraform.tfvars" -auto-approve -no-color
+            elif [ "${{ github.event.inputs.workspace }}" == "prod" ]; then
+              terraform apply -var-file="prod.tfvars" -auto-approve -no-color
+            elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
+              terraform apply -var-file="dev.tfvars" -auto-approve -no-color
+            else
+              terraform apply -var-file="dev.tfvars" -auto-approve -no-color
+            fi
           fi
