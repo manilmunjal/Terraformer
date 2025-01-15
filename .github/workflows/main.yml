@@ -1,10 +1,19 @@
 name: Terraform CI CD pipeline for Deploy AWS resources
 run-name: ${{github.actor}} has trigger the pipeline
 
-on: 
-  push:
-    branches:
-      - 'main'
+on:
+  workflow_dispatch:
+    inputs:
+      workspace:
+        description: 'Select Terraform workspace'
+        required: true
+        default: 'default'
+        type: choice
+        options:
+          - default
+          - staging
+          - production
+          - dev
 
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
