@@ -14,6 +14,14 @@ on:
           - staging
           - production
           - dev
+      deployment_type:
+        description: 'Select deployment type'
+        required: true
+        default: 'deploy'
+        type: choice
+        options:
+          - deploy
+          - destroy
 
 env:
   AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
