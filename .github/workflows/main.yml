@@ -1,5 +1,5 @@
 name: Terraform CI CD pipeline for Deploy AWS resources
-run-name: ${{github.actor}} has trigger the pipeline
+run-name: ${{ github.actor }} has triggered the pipeline
 
 on:
   workflow_dispatch:
@@ -26,21 +26,49 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Set Up Terraform
         uses: hashicorp/setup-terraform@v2
+
       - name: Terraform Init
         id: init
         run: terraform init
         working-directory: ./Terraform-vpc
+
       - name: Terraform Validate
         id: validate
         run: terraform validate
         working-directory: ./Terraform-vpc
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan
-        working-directory: ./Terraform-vpc
-      - name: Terraform Apply
-        id: apply
-        run: terraform apply --auto-approve
-        working-directory: ./Terraform-vpc
+
+      - name: Select the workspace
+        run: |
+          terraform workspace select ${{ github.event.inputs.workspace }} || terraform workspace new ${{ github.event.inputs.workspace }}
+
+      - name: Validate Terraform configuration
+        run: terraform validate
+
+      - name: Plan Terraform deployment with specific tfvars
+        run: |
+          # Use the appropriate tfvars file based on the selected workspace
+          if [ "${{ github.event.inputs.workspace }}" == "staging" ]; then
+            terraform plan -var-file="staging.tfvars" -no-color
+          elif [ "${{ github.event.inputs.workspace }}" == "production" ]; then
+            terraform plan -var-file="production.tfvars" -no-color
+          elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
+            terraform plan -var-file="dev.tfvars" -no-color
+          else
+            terraform plan -var-file="default.tfvars" -no-color
+          fi
+
+      - name: Apply Terraform changes
+        run: |
+          # Apply using the corresponding tfvars file
+          if [ "${{ github.event.inputs.workspace }}" == "staging" ]; then
+            terraform apply -var-file="staging.tfvars" -auto-approve -no-color
+          elif [ "${{ github.event.inputs.workspace }}" == "production" ]; then
+            terraform apply -var-file="production.tfvars" -auto-approve -no-color
+          elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
+            terraform apply -var-file="dev.tfvars" -auto-approve -no-color
+          else
+            terraform apply -var-file="default.tfvars" -auto-approve -no-color
+          fi
