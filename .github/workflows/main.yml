@@ -64,13 +64,13 @@ jobs:
           else
             # Otherwise, plan for deployment
             if [ "${{ github.event.inputs.workspace }}" == "test" ]; then
-              terraform plan -var-file="terraform.tfvars" -no-color
+              terraform plan -var-file="test.tfvars" -no-color
             elif [ "${{ github.event.inputs.workspace }}" == "prod" ]; then
               terraform plan -var-file="prod.tfvars" -no-color
             elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
               terraform plan -var-file="dev.tfvars" -no-color
             else
-              terraform plan -var-file="default.tfvars" -no-color
+              terraform plan -var-file="dev.tfvars" -no-color
             fi
           fi
         working-directory: ./Terraform-vpc
@@ -83,7 +83,7 @@ jobs:
           else
             # Otherwise, apply the deployment
             if [ "${{ github.event.inputs.workspace }}" == "test" ]; then
-              terraform apply -var-file="terraform.tfvars" -auto-approve -no-color
+              terraform apply -var-file="test.tfvars" -auto-approve -no-color
             elif [ "${{ github.event.inputs.workspace }}" == "prod" ]; then
               terraform apply -var-file="prod.tfvars" -auto-approve -no-color
             elif [ "${{ github.event.inputs.workspace }}" == "dev" ]; then
