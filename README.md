@@ -1,169 +1,135 @@
-# Terrraformer (AWS-IAC-POC)
+Sure, here is the content in complete markdown code:
+
+```markdown
+# Terraformer (AWS-IAC-POC)
 
 This repository contains Terraform code for automating the deployment of AWS infrastructure as part of a Proof of Concept (POC). The goal is to showcase Infrastructure as Code (IaC) principles and demonstrate how to efficiently manage and provision AWS resources using Terraform.
 
----
+## Table of Contents
 
-## 📋 Table of Contents
+* [Overview](#overview)
+* [Prerequisites](#prerequisites)
+* [Usage](#usage)
+    * [Manual Terraform Usage](#manual-terraform-usage)
+    * [Automated GitHub Actions CI/CD Pipeline](#automated-github-actions-cicd-pipeline)
+* [Resources Provisioned](#resources-provisioned)
+* [Directory Structure](#directory-structure)
+* [Contributing](#contributing)
 
-- [Overview](#-overview)
-- [Prerequisites](#-prerequisites)
-- [Usage](#-usage)
-- [Resources Provisioned](#%EF%B8%8F-resources-provisioned)
-- [Directory Structure](#-directory-structure)
-- [Contributing](#-contributing)
+## Overview
 
----
+This Proof of Concept (POC) aims to:
 
-## 📖 Overview
+* Demonstrate the power of **Terraform** as an effective tool for **Infrastructure as Code (IaC)**.
+* Automate the provisioning of AWS resources, showcasing the potential for scaling and managing infrastructure.
+* Promote the use of **reusable**, **scalable**, and **modular** Terraform code that can be adapted for various cloud architectures.
 
-This POC aims to:
-- Showcase Terraform as an effective IaC tool.
-- Automate the provisioning of AWS resources.
-- Promote reusable, scalable, and modular Terraform code.
+## Prerequisites
 
----
+Before using this repository, ensure you have the following installed and configured:
 
-## 🔧 Prerequisites
+1. **Terraform CLI:**
+   Install Terraform by following the official [Terraform Installation Guide](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli).
+2. **AWS CLI:**
+   Install and configure AWS CLI using the instructions provided in the official [AWS CLI User Guide](https://aws.amazon.com/cli/).
+   Configure your AWS credentials:
 
-Before using this repository, ensure you have the following installed:
-1. **Terraform CLI**: [Install Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-2. **AWS CLI**: [Install AWS CLI](https://aws.amazon.com/cli/) and configure it:
    ```bash
    aws configure
-3. An AWS account with the **necessary permissions** to create resources.
-4. A configured backend for storing **Terraform state** (optional but recommended).
-5. Change the **backend S3 bucket** name as per you want to save remotely give all neccessary in backend block at Terraform-vpc/provider.tf
+   ```
 
-# 🚀 Usage
+* AWS Account:
+  Ensure you have an AWS account with the necessary permissions to create and manage resources.
+* Terraform Backend (Optional but recommended):
+  Configure a remote backend (e.g., AWS S3) for storing the Terraform state. Modify the backend block in Terraform-vpc/provider.tf to match your S3 bucket name.
 
-Clone the repository:
+## Usage
 
-```bash
-git clone https://github.com/manilmunjal/AWS-IAC-POC.git
-cd AWS-IAC-POC
-cd Terraform-vpc
-```
-### For mannual terraform use this (Normal Mode)
-Initialize the Terraform environment:
+### Manual Terraform Usage
 
-```bash
-terraform init
-```
+Follow these steps for manual provisioning of AWS resources using Terraform:
 
-Validate the configuration files to ensure correctness:
+1. Clone the repository:
 
-```bash
-terraform validate
-```
+   ```bash
+   git clone [invalid URL removed]
+   cd AWS-IAC-POC
+   cd Terraform-vpc
+   ```
 
-Create a Terraform execution plan:
+2. Initialize the Terraform environment:
 
-```bash
-terraform plan
-```
+   ```bash
+   terraform init
+   ```
 
-Apply the configuration to provision resources:
+3. Validate the Terraform configuration files:
 
-```bash
-terraform apply
-```
+   ```bash
+   terraform validate
+   ```
 
-Confirm the operation when prompted.
+4. Create an execution plan for Terraform:
 
-Destroy the infrastructure when no longer needed:
+   ```bash
+   terraform plan
+   ```
 
-```bash
-terraform destroy
-```
+5. Apply the configuration to provision resources:
 
----
+   ```bash
+   terraform apply
+   ```
 
-### For automated Github Actions (Epic Mode)
-# **Triggering the Terraform CI/CD Pipeline**
+   Confirm the action when prompted.
 
-This guide explains how to manually trigger the Terraform CI/CD pipeline for AWS resource deployment via GitHub Actions.
+6. If necessary, destroy the provisioned infrastructure:
 
----
+   ```bash
+   terraform destroy
+   ```
 
-## **Steps to  Trigger the Workflow**
+### Automated GitHub Actions CI/CD Pipeline
 
-#### **1. Navigate to GitHub Actions**
-- Open your GitHub repository.
-- Click on the **Actions** tab.
+This repository is integrated with GitHub Actions for automated deployment and management of AWS resources.
 
-#### **2. Locate the Terraform Workflow**
-- Find the **Terraform CI CD pipeline for Deploy AWS resources** workflow on the left side.
-- Click on it to open the details.
+#### Triggering the Terraform CI/CD Pipeline
 
-#### **3. Trigger the Workflow**
-- Click on **Run workflow** on the right side.
-- Select the following options:
-  - **Workspace**: Choose `dev`, `test`, or `prod`.
-  - **Deployment Type**: Choose `deploy` or `destroy`.
-- Click **Start workflow**.
+This section explains how to manually trigger the Terraform CI/CD pipeline via GitHub Actions for deploying AWS resources.
 
-#### **4. Monitor the Workflow**
-- Refresh the page to view the workflow progress.
-- The workflow will execute:
-  - **Terraform Init**: Initializes Terraform.
-  - **Terraform Validate**: Validates the configuration.
-  - **Workspace Selection**: Selects the workspace.
-  - **Terraform Plan**: Previews the deployment or destruction.
-  - **Terraform Apply/Destroy**: Applies the changes or destroys resources.
+**Steps to Trigger the Workflow**
 
----
+1. Navigate to GitHub Actions:
+   * Open your GitHub repository.
+   * Click on the Actions tab.
+2. Locate the Terraform Workflow:
+   * Find the Terraform CI/CD pipeline for Deploy AWS resources workflow on the left side.
+   * Click on it to open the details.
+3. Trigger the Workflow:
+   * Click on Run workflow on the right side.
+   * Select the following options:
+       * Workspace: Choose from dev, test, or prod.
+       * Deployment Type: Choose deploy or destroy.
+   * Click Start workflow.
+4. Monitor the Workflow:
+   * Refresh the page to view the workflow progress. The workflow will execute the following steps:
+       * Terraform Init: Initializes Terraform.
+       * Terraform Validate: Validates the configuration.
+       * Workspace Selection: Selects the workspace.
+       * Terraform Plan: Previews the deployment or destruction.
+       * Terraform Apply/Destroy: Applies the changes or destroys resources.
 
-#### **Input Details**
+**Input Details**
 
-- **Workspace**: Select the environment (`dev`, `test`, or `prod`).
-- **Deployment Type**: Choose `deploy` to deploy or `destroy` to remove resources.
+* Workspace: Choose the environment (dev, test, or prod).
+* Deployment Type: Choose deploy to deploy or destroy to remove resources.
 
----
+**Conclusion**
 
-#### **Conclusion**
+By following the above steps, you can easily trigger and monitor the Terraform CI/CD pipeline for deploying or destroying resources in your selected workspace.
 
-Follow these steps to trigger and monitor the Terraform CI/CD pipeline for deploying or destroying resources in your chosen workspace.
-
-
-
-
-## 🏗️ Resources Provisioned
+## Resources Provisioned
 
 This POC provisions the following AWS resources:
 
-- **Virtual Private Cloud (VPC)**: A custom VPC to host resources.
-- **Subnets**: Multiple subnets for resource allocation.
-- **Security Groups**: To control inbound and outbound traffic.
-- **Internet Gateway**: To allow internet access for resources in public subnets.
-- **Route Tables and Associations**: For routing internet traffic appropriately.
-- **Application Load Balancer (ALB)**: To distribute incoming traffic across EC2 instances.
-- **EC2 Instances**: Virtual machines to run your applications.
-
----
-
-## 📂 Directory Structure
-
-```bash
-AWS-IAC-POC/
-├── modules/                # Reusable Terraform modules
-├── dev.tfvars              # Development environment variables
-├── main.tf                 # Main Terraform configuration file
-├── prod.tfvars             # Production environment variables
-├── provider.tf             # Terraform provider configuration
-├── test.tfvars             # Test environment variables
-├── variables.tf            # Input variables
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork this repository.
-2. Create a new branch for your feature or bugfix.
-3. Submit a pull request with a detailed description of your changes.
-
----
-
+* Virtual Private Cloud
