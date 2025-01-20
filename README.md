@@ -1,6 +1,6 @@
 # Terraformer (AWS-IAC-POC)
 
-This repository contains Terraform code for automating the deployment of AWS infrastructure as part of a Proof of Concept (POC). The goal is to showcase Infrastructure as Code (IaC) principles and demonstrate how to efficiently manage and provision AWS resources using Terraform.
+Terraformer (AWS-IAC-POC) is a comprehensive Terraform-based solution designed to automate the deployment of AWS infrastructure. As part of a Proof of Concept (POC), it demonstrates the principles of Infrastructure as Code (IaC) and showcases how to efficiently manage AWS resources using Terraform. The repository is structured to support scalable and modular infrastructure configurations, allowing users to automate the provisioning of key AWS resources like Virtual Private Cloud (VPC), EC2 instances, Load Balancers, and more. Additionally, it integrates with GitHub Actions for a fully automated CI/CD pipeline, enabling seamless deployment and destruction of infrastructure across different environments (dev, test, prod). Whether you're manually provisioning infrastructure or leveraging the automated pipeline, Terraformer provides a flexible and powerful solution for managing cloud resources efficiently.
 
 ---
 
