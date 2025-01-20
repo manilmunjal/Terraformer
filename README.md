@@ -35,9 +35,11 @@ Before using this repository, ensure you have the following installed:
 3. An AWS account with the **necessary permissions** to create resources.
 4. A configured backend for storing **Terraform state** (optional but recommended).
 
-## 🚀 Usage
+# 🚀 Usage
 
-Run these commands in the terminal (ensuring you have all neccessary packages)
+Clone the repository:
 
+```bash
 git clone https://github.com/your-username/AWS-IAC-POC.git
 cd AWS-IAC-POC
+
