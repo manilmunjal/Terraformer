@@ -93,12 +93,72 @@ This POC provisions the following AWS resources:
 ## 📂 Directory Structure
 
 ```bash
+# 🚀 Usage
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/AWS-IAC-POC.git
+cd AWS-IAC-POC
+```
+
+Initialize the Terraform environment:
+
+```bash
+terraform init
+```
+
+Validate the configuration files to ensure correctness:
+
+```bash
+terraform validate
+```
+
+Create a Terraform execution plan:
+
+```bash
+terraform plan
+```
+
+Apply the configuration to provision resources:
+
+```bash
+terraform apply
+```
+
+Confirm the operation when prompted.
+
+Destroy the infrastructure when no longer needed:
+
+```bash
+terraform destroy
+```
+
+---
+
+## 🏗️ Resources Provisioned
+
+This POC provisions the following AWS resources:
+
+- **Amazon S3**: For storing static assets and other data.
+- **Amazon EC2**: For virtual machine instances.
+- **Amazon RDS**: For relational database services.
+
+*(Update this section with specifics about the resources your configuration provisions.)*
+
+---
+
+## 📂 Directory Structure
+
+```bash
 AWS-IAC-POC/
 ├── modules/                # Reusable Terraform modules
+├── dev.tfvars              # Development environment variables
 ├── main.tf                 # Main Terraform configuration file
+├── prod.tfvars             # Production environment variables
+├── provider.tf             # Terraform provider configuration
+├── test.tfvars             # Test environment variables
 ├── variables.tf            # Input variables
-├── outputs.tf              # Outputs from the configuration
-└── README.md               # Project documentation
 ```
 
 ---
