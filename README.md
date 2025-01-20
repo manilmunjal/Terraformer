@@ -40,7 +40,7 @@ Before using this repository, ensure you have the following installed:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/AWS-IAC-POC.git
+git clone https://github.com/manilmunjal/AWS-IAC-POC.git
 cd AWS-IAC-POC
 cd Terraform-vpc
 ```
