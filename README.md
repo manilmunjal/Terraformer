@@ -80,6 +80,50 @@ terraform destroy
 ---
 
 ### For automated Github Actions (Epic Mode)
+# **Triggering the Terraform CI/CD Pipeline**
+
+This guide explains how to manually trigger the Terraform CI/CD pipeline for AWS resource deployment via GitHub Actions.
+
+---
+
+## **Steps to  Trigger the Workflow**
+
+#### **1. Navigate to GitHub Actions**
+- Open your GitHub repository.
+- Click on the **Actions** tab.
+
+#### **2. Locate the Terraform Workflow**
+- Find the **Terraform CI CD pipeline for Deploy AWS resources** workflow on the left side.
+- Click on it to open the details.
+
+#### **3. Trigger the Workflow**
+- Click on **Run workflow** on the right side.
+- Select the following options:
+  - **Workspace**: Choose `dev`, `test`, or `prod`.
+  - **Deployment Type**: Choose `deploy` or `destroy`.
+- Click **Start workflow**.
+
+#### **4. Monitor the Workflow**
+- Refresh the page to view the workflow progress.
+- The workflow will execute:
+  - **Terraform Init**: Initializes Terraform.
+  - **Terraform Validate**: Validates the configuration.
+  - **Workspace Selection**: Selects the workspace.
+  - **Terraform Plan**: Previews the deployment or destruction.
+  - **Terraform Apply/Destroy**: Applies the changes or destroys resources.
+
+---
+
+#### **Input Details**
+
+- **Workspace**: Select the environment (`dev`, `test`, or `prod`).
+- **Deployment Type**: Choose `deploy` to deploy or `destroy` to remove resources.
+
+---
+
+#### **Conclusion**
+
+Follow these steps to trigger and monitor the Terraform CI/CD pipeline for deploying or destroying resources in your chosen workspace.
 
 
 
