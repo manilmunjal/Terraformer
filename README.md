@@ -1,4 +1,4 @@
-# TERRAGIT (AWS-IAC-POC)
+# Terrraformer (AWS-IAC-POC)
 
 This repository contains Terraform code for automating the deployment of AWS infrastructure as part of a Proof of Concept (POC). The goal is to showcase Infrastructure as Code (IaC) principles and demonstrate how to efficiently manage and provision AWS resources using Terraform.
 
