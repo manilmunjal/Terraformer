@@ -44,7 +44,7 @@ git clone https://github.com/manilmunjal/AWS-IAC-POC.git
 cd AWS-IAC-POC
 cd Terraform-vpc
 ```
-### For manuall terraform use this (Normal Mode)
+### For mannual terraform use this (Normal Mode)
 Initialize the Terraform environment:
 
 ```bash
@@ -83,73 +83,18 @@ terraform destroy
 
 
 
-## 🏗️ Resources Provisioned
-
-This POC provisions the following AWS resources:
-
-- **Amazon S3**: For storing static assets and other data.
-- **Amazon EC2**: For virtual machine instances.
-- **Amazon RDS**: For relational database services.
-
-*(Update this section with specifics about the resources your configuration provisions.)*
-
----
-
-## 📂 Directory Structure
-
-```bash
-# 🚀 Usage
-
-Clone the repository:
-
-```bash
-git clone https://github.com/your-username/AWS-IAC-POC.git
-cd AWS-IAC-POC
-```
-
-Initialize the Terraform environment:
-
-```bash
-terraform init
-```
-
-Validate the configuration files to ensure correctness:
-
-```bash
-terraform validate
-```
-
-Create a Terraform execution plan:
-
-```bash
-terraform plan
-```
-
-Apply the configuration to provision resources:
-
-```bash
-terraform apply
-```
-
-Confirm the operation when prompted.
-
-Destroy the infrastructure when no longer needed:
-
-```bash
-terraform destroy
-```
-
----
 
 ## 🏗️ Resources Provisioned
 
 This POC provisions the following AWS resources:
 
-- **Amazon S3**: For storing static assets and other data.
-- **Amazon EC2**: For virtual machine instances.
-- **Amazon RDS**: For relational database services.
-
-*(Update this section with specifics about the resources your configuration provisions.)*
+- **Virtual Private Cloud (VPC)**: A custom VPC to host resources.
+- **Subnets**: Multiple subnets for resource allocation.
+- **Security Groups**: To control inbound and outbound traffic.
+- **Internet Gateway**: To allow internet access for resources in public subnets.
+- **Route Tables and Associations**: For routing internet traffic appropriately.
+- **Application Load Balancer (ALB)**: To distribute incoming traffic across EC2 instances.
+- **EC2 Instances**: Virtual machines to run your applications.
 
 ---
 
@@ -178,6 +123,3 @@ Contributions are welcome! To contribute:
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
