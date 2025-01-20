@@ -1,6 +1,3 @@
-Here's an enhanced and well-structured `README.md` for your Terraform project. This version includes a clear structure, formatting, and additional information for better clarity and professionalism.
-
-```markdown
 # Terraformer (AWS-IAC-POC)
 
 This repository contains Terraform code for automating the deployment of AWS infrastructure as part of a Proof of Concept (POC). The goal is to showcase Infrastructure as Code (IaC) principles and demonstrate how to efficiently manage and provision AWS resources using Terraform.
@@ -42,7 +39,6 @@ Before using this repository, ensure you have the following installed and config
    Configure your AWS credentials:
    ```bash
    aws configure
-   ```
 
 3. **AWS Account**:  
    Ensure you have an AWS account with the **necessary permissions** to create and manage resources.
