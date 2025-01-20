@@ -12,7 +12,6 @@ This repository contains Terraform code for automating the deployment of AWS inf
 - [Resources Provisioned](#%EF%B8%8F-resources-provisioned)
 - [Directory Structure](#-directory-structure)
 - [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
@@ -34,6 +33,7 @@ Before using this repository, ensure you have the following installed:
    aws configure
 3. An AWS account with the **necessary permissions** to create resources.
 4. A configured backend for storing **Terraform state** (optional but recommended).
+5. Change the **backend S3 bucket** name as per you want to save remotely give all neccessary in backend block at Terraform-vpc/provider.tf
 
 # 🚀 Usage
 
@@ -44,7 +44,7 @@ git clone https://github.com/manilmunjal/AWS-IAC-POC.git
 cd AWS-IAC-POC
 cd Terraform-vpc
 ```
-
+### For manuall terraform use this (Normal Mode)
 Initialize the Terraform environment:
 
 ```bash
@@ -78,6 +78,10 @@ terraform destroy
 ```
 
 ---
+
+### For automated Github Actions (Epic Mode)
+
+
 
 ## 🏗️ Resources Provisioned
 
