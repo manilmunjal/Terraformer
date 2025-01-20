@@ -42,6 +42,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/your-username/AWS-IAC-POC.git
 cd AWS-IAC-POC
+cd Terraform-vpc
 ```
 
 Initialize the Terraform environment:
