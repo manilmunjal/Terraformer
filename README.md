@@ -182,18 +182,3 @@ We welcome contributions to this repository! To contribute, follow these steps:
 
 ---
 
-## 📜 License
-
-This repository is licensed under the [MIT License](LICENSE).
-```
-
----
-
-### Key Improvements:
-
-- **Clearer Sections**: The content is divided into clear, focused sections, making it easier to navigate and understand.
-- **Enhanced Formatting**: Better use of Markdown elements such as headings, lists, and code blocks for clarity.
-- **GitHub Actions Integration**: A dedicated section for explaining GitHub Actions for automated deployments, along with step-by-step instructions.
-- **Professional Language**: The language is formal and industry-oriented, suitable for both technical and non-technical readers.
-
-This README is now ready to help guide users through setting up and using your Terraform-based infrastructure project.
