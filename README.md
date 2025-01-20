@@ -6,13 +6,13 @@ This repository contains Terraform code for automating the deployment of AWS inf
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [Resources Provisioned](##resources-provisioned)
-- [Directory Structure](#directory-structure)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Prerequisites](#-prerequisites)
+- [Usage](#-usage)
+- [Resources Provisioned](#-resources-provisioned)
+- [Directory Structure](#-directory-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
