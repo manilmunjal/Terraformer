@@ -46,6 +46,9 @@ Before using this repository, ensure you have the following installed and config
 4. **Terraform Backend** (Optional but recommended):  
    Configure a remote backend (e.g., AWS S3) for storing the **Terraform state**. Modify the `backend` block in `Terraform-vpc/provider.tf` to match your S3 bucket name.
 
+5. **Secrets pass**
+    Pass the secrets in the github action secrets for AWS access
+
 ---
 
 ## 🚀 Usage
