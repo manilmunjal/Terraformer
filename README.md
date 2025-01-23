@@ -4,7 +4,7 @@ Terraformer (AWS-IAC-POC) is a comprehensive Terraform-based solution designed t
 
 
 ## Demo Video
-[Watch the video](media/Traffic Flow.mp4)
+[Watch the video](./TrafficFlow.mp4)
 
 ---
 
