@@ -2,11 +2,12 @@
 
 Terraformer (AWS-IAC-POC) is a comprehensive Terraform-based solution designed to automate the deployment of AWS infrastructure. As part of a Proof of Concept (POC), it demonstrates the principles of Infrastructure as Code (IaC) and showcases how to efficiently manage AWS resources using Terraform. The repository is structured to support scalable and modular infrastructure configurations, allowing users to automate the provisioning of key AWS resources like Virtual Private Cloud (VPC), EC2 instances, Load Balancers, and more. Additionally, it integrates with GitHub Actions for a fully automated CI/CD pipeline, enabling seamless deployment and destruction of infrastructure across different environments (dev, test, prod). Whether you're manually provisioning infrastructure or leveraging the automated pipeline, Terraformer provides a flexible and powerful solution for managing cloud resources efficiently.
 
-
+---
+I have not used the NAT Gateway I have used route table and route table association instead
+---
 ## Watch the Demo Video
 
 [![Watch the video](./trafficflow.png)](./TrafficFlow.mp4)
-
 
 ---
 
