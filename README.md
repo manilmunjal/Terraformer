@@ -4,8 +4,8 @@ Terraformer (AWS-IAC-POC) is a comprehensive Terraform-based solution designed t
 
 ---
 I have not used the NAT Gateway I have used route table and route table association instead
----
-## Watch the Demo Video
+
+## Click to watch the Traffic Flow
 
 [![Watch the video](./trafficflow.png)](./TrafficFlow.mp4)
 
